@@ -1,0 +1,7 @@
+Motivasi Mengikuti Course Laravel di SanberCode
+
+Saya memiliki ketertarikan besar di bidang pengembangan web, khususnya pada pengembangan backend menggunakan framework modern. Laravel menjadi salah satu framework PHP yang paling banyak digunakan karena strukturnya rapi, aman, dan efisien dalam membangun aplikasi web berskala kecil hingga besar.
+
+Saya memilih mengikuti course Laravel di SanberCode karena kurikulumnya terstruktur, relevan dengan kebutuhan industri, serta dibimbing oleh mentor yang berpengalaman. Selain mempelajari konsep dasar hingga lanjutan Laravel, saya juga berharap dapat memahami praktik terbaik dalam pengembangan aplikasi web, seperti manajemen database, autentikasi, dan pengelolaan API.
+
+Melalui course ini, saya ingin meningkatkan kemampuan teknis saya secara signifikan, membangun portofolio proyek yang nyata, serta mempersiapkan diri untuk terjun ke dunia kerja sebagai web developer yang kompeten. Saya yakin SanberCode dapat menjadi tempat yang tepat untuk mengembangkan skill, disiplin belajar, dan pemahaman teknologi yang sesuai dengan perkembangan industri saat ini.
