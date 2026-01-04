@@ -1,0 +1,115 @@
+Soal 1 Membuat Database
+
+Jawab :
+
+- CREATE DATABASE myshop;
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Soal 2 Membuat Table di Dalam Database
+
+Jawab :
+
+Table Users
+- Masuk terlebih dahulu ke database yang tadi sudah di buat yaitu myshop
+- Kemudian masuk ke tab sql
+- Query :
+  CREATE TABLE users( id int PRIMARY KEY AUTO_INCREMENT, name varchar(255) NOT NULL, email varchar(255) NOT NULL UNIQUE, password varchar(255) NOT NULL );
+
+
+Table Categories
+- Klik kembali database myshop
+- Kemudian masuk ke tab sql
+- Query :
+  CREATE TABLE categories ( id int PRIMARY KEY AUTO_INCREMENT, name varchar(255) NOT NULL ); 
+  
+
+Table Items
+- Klik kembali database myshop
+- Kemudian masuk ke tab sql
+- Query :
+  CREATE TABLE items( id int PRIMARY KEY AUTO_INCREMENT, name varchar(255) NOT NULL, description varchar(255) NOT NULL, price INTEGER NOT NULL, stock INTEGER NOT NULL, category_id INTEGER NOT NULL, FOREIGN KEY (category_id) REFERENCES categories(id) );
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Soal 3 Memasukkan Data pada Table
+Jawab :
+
+Insert data ke Table Users
+- Klik table users
+- Klik tab sql
+- Query :
+  INSERT INTO users(name, email, password) VALUES("John Doe", "john@doe.com", "john123"), ("Jane Doe", "jane@doe.com", "jenita123");
+
+
+Insert data ke Table Categories
+- Klik table categories
+- Klik tab sql
+- Query :
+INSERT INTO categories(name) VALUES("gadget"), ("cloth"), ("men"), ("women"), ("branded");
+
+
+Insert data ke Table Items
+- Klik table items
+- Klik tab sql
+- Query :
+  INSERT INTO items(name, description, price, stock, category_id) VALUES("Sumsang b50", "hape keren dari merek sumsang", 4000000, 100, 1), ("Uniklooh", "baju keren dari brand ternama", 500000, 50, 2), ("IMHO Watch", "jam tangan anak yang jujur banget", 2000000, 10, 1);
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Soal 4 Mengambil Data dari Database
+Jawab :
+
+4a. Mengambil data dari Table Users (Menampilkan semua data users kecuali password)
+- Klik table users
+- Klik tab sql
+- Query :
+  SELECT id, name, email FROM users;
+
+
+
+4b. Mengambil data dari Table Items
+- Klik table items
+- Klik tab sql
+
+- Query menampilkan items yang memiliki harga di atas 1.000.000 :
+  SELECT * FROM items WHERE price > 1000000;
+
+- Query menampilkan items yang memiliki nama serupa (dengan kata kunci “uniklo”, “watch”, atau “sang”) :
+  SELECT * FROM items WHERE name LIKE "%uniklo%";
+  SELECT * FROM items WHERE name LIKE "%watch%";
+  SELECT * FROM items WHERE name LIKE "%sang%";
+
+
+4c. Mengabungkan data Table Items dengan Table Categories
+- Klik table items
+- Klik tab sql
+- Query :
+  SELECT items.*, categories.name FROM items INNER JOIN categories ON items.category_id = categories.id;
+  
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Soal 5 Mengubah Data database items (Harga sumsang b50 menjadi 2500000)
+Jawab :
+
+Mengubah data dari Table Users
+- Klik table items
+- Klik tab sql
+- Query :
+  UPDATE items SET price = 2500000 WHERE ID = 1;
+
+
+
+
