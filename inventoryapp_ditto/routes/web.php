@@ -7,3 +7,4 @@ use App\Http\Controllers\FormController;
 Route::get('/', [DashboardController::class, 'home']);
 Route::get('/daftar', [FormController::class, 'pendaftaran']);
 Route::post('/welcome', [FormController::class, 'kirim']);
+
