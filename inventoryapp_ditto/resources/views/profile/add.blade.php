@@ -1,7 +1,25 @@
 @extends('layouts.master')
-@section('title', 'Create Categories')
+@section('title', 'Create Profile')
 
 @section('content')
+
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+
 
 <div class="container py-5">
     <div class="row justify-content-center">
@@ -11,8 +29,8 @@
             <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
                 
                 <div class="card-header bg-gradient-primary text-white py-5 text-center">
-                    <h3 class="mb-1 fw-bold fs-5">Add New Category</h3>
-                    <p class="mb-0 fs-2 text-muted">Group your products into well-organized categories</p>
+                    <h3 class="mb-1 fw-bold fs-5">Add New Profile</h3>
+                    <p class="mb-0 fs-2 text-muted">Set up your personal information to get started</p>
                 </div>
 
                 <div class="card-body p-5 p-md-5"> <!-- padding lebih nyaman -->
@@ -35,33 +53,39 @@
                         </div>
                     @endif
 
-                    <form action="{{ url('/categories') }}" method="POST">
+                    <form action="/profile" method="POST">
                         @csrf
 
                         <!-- Nama Kategori - lebih lebar & floating -->
                         <div class="mb-5">
                             <div class="form-floating">
-                                <input type="text" class="form-control form-control-lg" id="name" name="name" 
-                                       placeholder="Nama Kategori" required autofocus>
-                                <label for="name">Category Name</label>
+                                <input type="number"
+                                    class="form-control form-control-lg"
+                                    id="age"
+                                    name="age"
+                                    value="{{ old('age') }}"
+                                    placeholder="age"
+                                    required autofocus>
+
+                                <label for="age">Age</label>
                             </div>
-                            <small class="text-muted d-block mt-2">Example: Pakaian Muslim, Aksesoris Kepala, Celana Sirwal, dll.</small>
+                            <small class="text-muted d-block mt-2">Example: 18, 25, 30.</small>
                         </div>
 
                         <!-- Deskripsi - textarea lebih lebar & tinggi -->
                         <div class="mb-5">
                             <div class="form-floating">
-                                <textarea class="form-control form-control-lg" id="description" name="description" 
-                                          placeholder="Deskripsi kategori" style="height: 160px"></textarea>
-                                <label for="description">Category Description (optional)</label>
+                                <textarea class="form-control form-control-lg" id="bio" name="bio"
+                                          placeholder="Bio (optional)" style="height: 160px">{{ old('bio') }}</textarea>
+                                <label for="bio">Bio (optional)</label>
                             </div>
-                            <small class="text-muted d-block mt-2">Briefly explain what this category is for or its main characteristics</small>
+                            <small class="text-muted d-block mt-2">Briefly describe yourself, your interests, or your background.</small>
                         </div>
 
                         <!-- Tombol Submit - besar, gradient, shadow hover -->
                         <div class="d-grid mt-5">
                             <button type="submit" class="btn btn-primary btn-lg fw-bold rounded-pill shadow-lg">
-                                <i class="bi bi-save me-2"></i> Save Category
+                                <i class="bi bi-save me-2"></i> Submit Profile
                             </button>
                         </div>
 

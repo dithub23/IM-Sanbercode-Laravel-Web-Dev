@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Halaman Home
+    Dashboard Page
 @endsection
 
 @section('content')

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Categories;
+
+// Muntuk mengelola tanggal dan waktu (date & time) di Laravel / PHP dengan cara yang lebih mudah dan powerful dibanding fungsi PHP bawaan.
 use Carbon\Carbon;
 
 class CategoriesController extends Controller
@@ -45,7 +48,8 @@ class CategoriesController extends Controller
 
         public function show($id)
         {
-            $categories = DB::table('categories')->find($id);
+            // $categories = DB::table('categories')->find($id);
+            $categories = Categories::find($id);
             return view('categories.detail', ['categories' => $categories]);
         }
 

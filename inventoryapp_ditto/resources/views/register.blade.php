@@ -1,86 +1,156 @@
-
 @extends('layouts.master')
-@section('title')
-    Halaman Pendaftaran
-@endsection
+@section('title', 'Register Page')
 
 @section('content')
-    <h1> Pendaftaran </h1>
 
-    <form action="/welcome" method="POST">
-      @csrf
-      <a href="/">Kembali</a><br />
-      <br />
+<div class="container">
+    <div class="row justify-content-center my-5">
+        <div class="col-lg-7 col-md-9 col-12">
 
-      <!-- input-1 (Text) -->
-      <br />
-      <label>First Name</label><br />
-      <input
-        type="text"
-        name="firstname"
-        placeholder="Masukan nama depan"
-        required
-      />
-      <br />
-      <br />
-      <label>Last Name</label><br />
-      <input
-        type="text"
-        name="lastname"
-        placeholder="Masukan nama belakang"
-        required
-      />
-      <br />
-      <br />
-      <label>Age</label><br />
-      <input type="number" name="age" min="20" max="90" /> <br />
-      <br />
-      <label>Password</label><br />
-      <input type="password" name="password" /> <br />
-      <br />
+            <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+                <div class="card-header bg-gradient-primary text-white text-center py-4">
+                    <h3 class="mb-0 fw-bold">Create New Account</h3>
+                    <p class="mb-0 opacity-75">Fill in your personal details</p>
+                </div>
 
-      <!-- input-2 (Radio) -->
-      <br />
-      <label>Gender</label><br />
-      <input type="radio" value="1" name="gender" /> Male <br />
-      <input type="radio" value="2" name="gender" /> Female <br />
-      <input type="radio" value="3" name="gender" /> Other <br />
-      <br />
+                <div class="card-body p-4 p-md-5">
 
-      <!-- input-3 (Checkbox) -->
-      <br />
-      <input type="checkbox" value="1" name="skill" /> Laravel <br />
-      <input type="checkbox" value="2" name="skill" /> PHP <br />
-      <input type="checkbox" value="3" name="skill" /> CSS <br />
-      <input type="checkbox" value="4" name="skill" /> Javascript <br />
-      <br />
+                    <a href="/" class="btn btn-link text-decoration-none mb-4 d-inline-block">
+                        ← Back to Dashboard
+                    </a>
 
-      <!-- input-4 (Drop Down) -->
-      <br />
-      <label>Nationality</label>
-      <select>
-        <option value="1">Indonesian</option>
-        <option value="2">American</option>
-        <option value="3">British</option>
-        <option value="4">Australian</option>
-        <option value="5">Japanese</option>
-        <option value="6">Korean</option>
-        <option value="7">German</option>
-        <option value="8">India</option>
-      </select>
-      <br />
-      <br />
+                    <form action="/welcome" method="POST">
+                        @csrf
 
-      <!-- input-5 (Text Area) -->
-      <br />
-      <label>Address</label> <br />
-      <textarea name="address" cols="30" rows="10"></textarea> <br />
-      <br />
-      <br />
-      <!-- Tombol Submit -->
-      <input type="submit" value="Daftar" />
-    </form>
+                        <div class="row g-3">
+
+                            <!-- First & Last Name -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="firstname" name="firstname" 
+                                           placeholder="Masukan nama depan" required>
+                                    <label for="firstname">First Name</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="lastname" name="lastname" 
+                                           placeholder="Masukan nama belakang" required>
+                                    <label for="lastname">Last Name</label>
+                                </div>
+                            </div>
+
+                            <!-- Age -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="number" class="form-control" id="age" name="age" 
+                                           min="20" max="90" placeholder="Umur">
+                                    <label for="age">Age</label>
+                                </div>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="password" class="form-control" id="password" name="password" 
+                                           placeholder="Password">
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="col-12 mb-3">
+                                <label class="form-label fw-bold">Gender</label>
+                                <div class="d-flex flex-wrap gap-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="male" value="1">
+                                        <label class="form-check-label" for="male">Male</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="female" value="2">
+                                        <label class="form-check-label" for="female">Female</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="gender" id="other" value="3">
+                                        <label class="form-check-label" for="other">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Skills (Checkbox) -->
+                            <div class="col-12 mb-4">
+                                <label class="form-label fw-bold">Your Skill</label>
+                                <div class="row g-3">
+                                    <div class="col-6 col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="skill[]" value="1" id="laravel">
+                                            <label class="form-check-label" for="laravel">Laravel</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="skill[]" value="2" id="php">
+                                            <label class="form-check-label" for="php">PHP</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="skill[]" value="3" id="css">
+                                            <label class="form-check-label" for="css">CSS</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 col-sm-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="skill[]" value="4" id="javascript">
+                                            <label class="form-check-label" for="javascript">JavaScript</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Nationality -->
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="nationality" name="nationality">
+                                        <option value="1" selected>Indonesian</option>
+                                        <option value="2">American</option>
+                                        <option value="3">British</option>
+                                        <option value="4">Australian</option>
+                                        <option value="5">Japanese</option>
+                                        <option value="6">Korean</option>
+                                        <option value="7">German</option>
+                                        <option value="8">Indian</option>
+                                    </select>
+                                    <label for="nationality">Nationality</label>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="col-12">
+                                <div class="form-floating mb-4">
+                                    <textarea class="form-control" name="address" placeholder="Alamat lengkap" 
+                                              id="address" style="height: 120px"></textarea>
+                                    <label for="address">Address</label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg fw-bold rounded-pill shadow">
+                                Register Now
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 @endsection
-    
-    
